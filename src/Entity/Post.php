@@ -30,7 +30,7 @@ class Post
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Like::class)]
     private $likes;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'posts')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
