@@ -22,11 +22,11 @@ class Comment
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image;
 
-    #[ORM\ManyToOne(targetEntity: post::class, inversedBy: 'comment')]
+    #[ORM\ManyToOne(targetEntity: Post::class, inversedBy: 'comment')]
     #[ORM\JoinColumn(nullable: false)]
     private $post;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'comment')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comment')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 

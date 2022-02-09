@@ -13,10 +13,10 @@ class Follower
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'followers')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'followers')]
     private $followers;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'following')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'following')]
     private $following;
 
     public function getId(): ?int
@@ -24,24 +24,24 @@ class Follower
         return $this->id;
     }
 
-    public function getFollowers(): ?user
+    public function getFollowers(): ?User
     {
         return $this->followers;
     }
 
-    public function setFollowers(?user $followers): self
+    public function setFollowers(?User $followers): self
     {
         $this->followers = $followers;
 
         return $this;
     }
 
-    public function getFollowing(): ?user
+    public function getFollowing(): ?User
     {
         return $this->following;
     }
 
-    public function setFollowing(?user $following): self
+    public function setFollowing(?User $following): self
     {
         $this->following = $following;
 

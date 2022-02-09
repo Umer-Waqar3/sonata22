@@ -10,17 +10,16 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-final class PostAdmin extends AbstractAdmin
+final class CommentAdmin extends AbstractAdmin
 {
 
     protected function configureDatagridFilters(DatagridMapper $filter): void
     {
         $filter
             ->add('id')
-            ->add('title')
             ->add('content')
-            ->add('image')
             ->add('date')
+            ->add('image')
             ;
     }
 
@@ -28,10 +27,9 @@ final class PostAdmin extends AbstractAdmin
     {
         $list
             ->add('id')
-            ->add('title')
             ->add('content')
-            ->add('image')
             ->add('date')
+            ->add('image')
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
@@ -44,7 +42,6 @@ final class PostAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form): void
     {
         $form
-            ->add('title')
             ->add('content')
             ->add('image')
             ;
@@ -54,10 +51,9 @@ final class PostAdmin extends AbstractAdmin
     {
         $show
             ->add('id')
-            ->add('title')
             ->add('content')
-            ->add('image')
             ->add('date')
+            ->add('image')
             ;
     }
 }

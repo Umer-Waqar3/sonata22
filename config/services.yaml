@@ -36,3 +36,24 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Post }
         public: true
+
+    admin.comment:
+        class: App\Admin\CommentAdmin
+        arguments: [~, App\Entity\Comment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Comment }
+        public: true
+
+    admin.friend:
+        class: App\Admin\FriendAdmin
+        arguments: [~, App\Entity\Friend, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Friend }
+        public: true
+
+    admin.follower:
+        class: App\Admin\FollowerAdmin
+        arguments: [~, App\Entity\Follower, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Follower }
+        public: true

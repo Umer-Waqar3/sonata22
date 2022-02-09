@@ -13,11 +13,11 @@ class Friend
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'friends')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'friends')]
     #[ORM\JoinColumn(nullable: false)]
     private $sender;
 
-    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'friends2')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'friends2')]
     #[ORM\JoinColumn(nullable: false)]
     private $reciver;
 
@@ -26,24 +26,24 @@ class Friend
         return $this->id;
     }
 
-    public function getSender(): ?user
+    public function getSender(): ?User
     {
         return $this->sender;
     }
 
-    public function setSender(?user $sender): self
+    public function setSender(?User $sender): self
     {
         $this->sender = $sender;
 
         return $this;
     }
 
-    public function getReciver(): ?user
+    public function getReciver(): ?User
     {
         return $this->reciver;
     }
 
-    public function setReciver(?user $reciver): self
+    public function setReciver(?User $reciver): self
     {
         $this->reciver = $reciver;
 
