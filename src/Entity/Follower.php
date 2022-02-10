@@ -19,6 +19,7 @@ class Follower
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'following')]
     private $following;
 
+
     public function getId(): ?int
     {
         return $this->id;

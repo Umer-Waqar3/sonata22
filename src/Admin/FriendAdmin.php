@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Admin;
 
-use Sonata\AdminBundle\Admin\AbstractAdmin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
+use App\Entity\User;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 final class FriendAdmin extends AbstractAdmin
 {
@@ -24,10 +26,11 @@ final class FriendAdmin extends AbstractAdmin
     {
         $list
             ->add('id')
+            ->add('sender.username')
+            ->add('reciver.username')
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
-                    'edit' => [],
                     'delete' => [],
                 ],
             ]);
@@ -36,7 +39,15 @@ final class FriendAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form): void
     {
         $form
-            ->add('id')
+
+            ->add('sender', ModelType::class,[
+                'class' => User::class,
+                'property' => 'username',
+            ])
+            ->add('reciver', ModelType::class,[
+                'class' => User::class,
+                'property' => 'username',
+            ])
             ;
     }
 

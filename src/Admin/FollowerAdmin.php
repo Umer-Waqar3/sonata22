@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Admin;
 
+use App\Entity\User;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 final class FollowerAdmin extends AbstractAdmin
@@ -17,6 +19,9 @@ final class FollowerAdmin extends AbstractAdmin
     {
         $filter
             ->add('id')
+            ->add('followers.username')
+            ->add('following.username')
+
             ;
     }
 
@@ -24,10 +29,11 @@ final class FollowerAdmin extends AbstractAdmin
     {
         $list
             ->add('id')
+            ->add('followers.username')
+            ->add('following.username')
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
-                    'edit' => [],
                     'delete' => [],
                 ],
             ]);
@@ -36,7 +42,14 @@ final class FollowerAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $form): void
     {
         $form
-            ->add('id')
+            ->add('followers', ModelType::class, [
+                'class' => User::class,
+                'property' => 'username',
+            ])
+            ->add('following', ModelType::class, [
+                'class' => User::class,
+                'property' => 'username',
+            ])
             ;
     }
 
@@ -44,6 +57,8 @@ final class FollowerAdmin extends AbstractAdmin
     {
         $show
             ->add('id')
+            ->add('followers.username')
+            ->add('following.username')
             ;
     }
 }

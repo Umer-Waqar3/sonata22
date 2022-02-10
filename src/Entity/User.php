@@ -56,6 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'reciver', targetEntity: Friend::class, orphanRemoval: true)]
     private $friends2;
 
+
     public function __construct()
     {
         $this->likes = new ArrayCollection();

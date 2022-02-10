@@ -59,6 +59,9 @@ final class UserAdmin extends AbstractAdmin
             ->add('roles')
             ->add('password')
             ->add('username')
+            ->add('following', null , array(
+                'associated_property' => 'following'
+            ))
             ;
     }
 }
